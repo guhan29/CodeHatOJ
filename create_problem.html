@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>CodeHat</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="./css/style.css" rel="stylesheet" type="text/css" />
+  <link href="./css/auth.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="login-form-box" style="background-color: #ffffff; padding: 0 5rem 5rem 5rem;">
+      <img src="./images/problem.png" class="img-rounded center-block" style="width: 150px;" alt="Avatar" />
+      <h2 class="form-title" style="font-size: 2rem;">Author Problems</h2>
+      <h2 class="form-subtitle" style="font-size: 1.5rem;">
+        Create Problem
+      </h2>
+      <form class="form">
+        <div class="form-panel">
+          <div class="form-row">
+            <label>Problem Name</label>
+            <div class="control">
+              <input type="text" name="first-name" placeholder="Eg: House Robber" class="input">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label>Problem Handle</label>
+            <div class="control">
+              <input type="text" name="last-name" placeholder="Eg: house-robber" class="input">
+            </div>
+          </div>
+          <div class="form-row">
+            <label>Problem Defenition</label>
+            <div class="control">
+              <textarea class="form-control input"></textarea>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label>Time Limit (secs)</label>
+            <div class="control">
+              <input type="number" name="time_limit" placeholder="2" class="input">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label>Memory Limit (bytes)</label>
+            <div class="control">
+              <input type="number" name="memory_limit" placeholder="5000" class="input">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label>Points</label>
+            <div class="control">
+              <input type="number" name="points" placeholder="100" class="input">
+            </div>
+          </div>
+
+          <div class="grouped fields">
+            <div class="form-row">
+              <label for="">TestCase #1</label>
+              <input type="text" name="testcase-input" placeholder="TestCase Input">
+              <br><br>
+              <textarea rows="2" placeholder="TestCase Output" class="form-control"></textarea>
+            </div>
+            <button class="btn btn-primary">
+              Add more
+              <i class="plus icon"></i>
+            </button>
+          </div>
+
+          <br />
+          <button class="button" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
