@@ -1,0 +1,217 @@
+<html>
+  <style>
+    body {
+      background: #5B5B58
+    }
+
+    .form-control:focus {
+      box-shadow: none;
+      border-color: #5B5B58;
+    }
+
+    .profile-button {
+      background: #545451;
+      box-shadow: none;
+      border: none;
+    }
+
+    .profile-button:hover {
+      background: #918E8E;
+    }
+
+    .profile-button:focus {
+      background: #E0E0DE;
+      box-shadow: none;
+    }
+
+    .profile-button:active {
+      background: #545451;
+      box-shadow: none;
+    }
+
+    .back:hover {
+      color: #682773;
+      cursor: pointer;
+    }
+  </style>
+  <head>
+    <title>HatCode</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- <link rel="stylesheet" type="text/css" href="index.css" /> -->
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    />
+
+    <!-- Latest compiled and minified CSS -->
+    <!--<link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" 
+    /> -->
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Select2 Package -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container rounded bg-white mt-5">
+      <div class="row">
+        <div class="col-md-4 border-right">
+          <div
+            class="d-flex flex-column align-items-center text-center p-3 py-5"
+          >
+            <img
+              class="rounded-circle mt-5"
+              src="https://cdn.glitch.global/cb0fb47f-a8c0-49d2-8f79-c86bc78b762a/img_avatar.png?v=1647488984248"
+              width="90"
+            /><span class="font-weight-bold">Faculty name</span
+            ><span class="text-black-50">abc@gmail.com</span
+            ><span>Designation</span>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="p-3 py-5">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div class="d-flex flex-row align-items-center back">
+                <i class="fas fa-arrow-circle-left"></i>
+                <a
+                  style="text-decoration: none; color: #2e2d31"
+                  href="profile.html"
+                >
+                  <h7> Back to home</h7>
+                </a>
+              </div>
+              <h6 class="text-right">Edit Profile</h6>
+            </div>
+            <div class="row mt-2">
+              <!--                     <div class="col-md-6"><input type="text" class="form-control" placeholder="first name" value="Faculty first name"></div> -->
+              <div class="col-md-6 input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">First Name</div>
+                </div>
+                <!--                     <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Username"> -->
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="first name"
+                  value="Faculty first name"
+                />
+              </div>
+
+              <!--                     <div class="col-md-6"><input type="text" class="form-control" value="Faculty last name" placeholder="last name"></div> -->
+              <div class="col-md-6 input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Last Name</div>
+                </div>
+                <!--                     <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Username"> -->
+                <!--                     <input type="text" class="form-control" placeholder="first name" value="Faculty first name"> -->
+                <input
+                  type="text"
+                  class="form-control"
+                  value="Faculty last name"
+                  placeholder="last name"
+                />
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <div class="col-md-6 input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fas fa-envelope"></i>
+                  </div>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Email"
+                  value="email@gmail.com"
+                />
+              </div>
+              <div class="col-md-6 input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fas fa-phone"></i>
+                  </div>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  value="+19685969668"
+                  placeholder="Phone number"
+                />
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <div class="col-md-6 input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="address"
+                  value="A-1,Second street,Amrita Vishwa Vidyapeetham"
+                />
+              </div>
+
+              <div class="col-md-6 input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fas fa-globe"></i>
+                  </div>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  value="India"
+                  placeholder="Country"
+                />
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <div class="form-group" style="font-size: 20px">
+                <div class="form-group">
+                  <label for="exampleFormControlTextarea1">About Me</label>
+                  <textarea
+                    class="form-control"
+                    id="exampleFormControlTextarea1"
+                    rows="5"
+                    style="width: 30vw"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="mt-5 text-right">
+              <button class="btn btn-primary profile-button" type="button">
+                Save Profile
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

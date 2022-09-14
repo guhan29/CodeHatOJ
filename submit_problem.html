@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>CodeHat</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="./css/style.css" rel="stylesheet" type="text/css" />
+  <link href="./css/auth.css" rel="stylesheet" type="text/css" />
+
+  <style>
+    html {
+      background-color: white !important;
+    }
+
+    body {
+      background-color: white !important;
+    }
+
+    #langform {
+      margin-top: 3rem;
+    }
+
+    .code-editor {
+      position: relative;
+      width: 100%;
+      height: 50rem;
+      /* background-color: black; */
+      margin-bottom: 5rem;
+      margin-top: 2rem;
+    }
+    
+
+    #editor {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      font-size: 1em;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>House Robber</h2>
+    <ul class="nav nav-tabs">
+      <li class="active">
+        <a data-toggle="tab" href="#description">
+          <span class="glyphicon glyphicon-list-alt"></span>
+          Description
+        </a>
+      </li>
+      <li><a data-toggle="tab" href="#submissions-menu">Submissions</a></li>
+      <li><a data-toggle="tab" href="#editorial-menu">Editorial</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div id="description" class="tab-pane fade in active">
+        <p>You are a professional robber planning to rob houses along a street. Each house has a certain amount of money
+          stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security
+          systems connected and it will automatically contact the police if two adjacent houses were broken into on the
+          same night.
+
+          Given an integer array nums representing the amount of money of each house, return the maximum amount of money
+          you can rob tonight without alerting the police.</p>
+        
+        <hr>
+        <div>
+          <h3>Example 1</h3>
+          <p>Given size of input followd by the spaced numbers</p>
+          <h5>Input:</h5>
+          4 <br>
+          1 2 3 1
+          <h5>Output:</h5> 4
+          <h5>Explanation:</h5> Rob house 1 (money = 1) and then rob house 3 (money = 3).
+          Total amount you can rob = 1 + 3 = 4.
+        </div>
+      </div>
+      <div id="submissions-menu" class="tab-pane fade">
+        <h3>Submissions</h3>
+        <p>No submissions yet</p>
+      </div>
+      <div id="editorial-menu" class="tab-pane fade">
+        <h3>Editorial</h3>
+        <p>-</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <form class="form-inline" id="langform" onsubmit="">
+      <select class="form-control" id="langsel">
+        <option value="js">Javascript</option>
+        <option value="cpp">C++</option>
+        <option value="c">C</option>
+        <option value="py3">Python 3</option>
+      </select>&nbsp;
+    
+      <button class="btn btn-primary">Submit</button>
+    </form>
+
+    <div class="code-editor">
+      <div id="editor">console.log("Hello, World");</div>
+    </div>
+  </div>
+
+  <script src="./ace-builds/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+  <script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/monokai");
+    editor.session.setMode("ace/mode/javascript");
+
+    let cppInit = `#include <iostream>
+
+int main() {
+    std::cout << "Hello World!";
+    return 0;
+}`;
+    let cInit = `#include <stdio.h>
+
+int main() {
+    printf("Hello World!\\n");
+    return 0;
+}`;
+
+    let pyInit = `print("Hello, World")`;
+    let jsInit = `console.log("Hello, World");`;
+
+
+    $('#langsel').change(function (el) {
+      let lang = el.target.value;
+      switch (lang) {
+        case "js":
+          editor.session.setValue(jsInit);
+          editor.session.setMode("ace/mode/javascript");
+          break;
+        case "c":
+          editor.session.setValue(cInit);
+          editor.session.setMode("ace/mode/c_cpp");
+          break;
+        case "cpp":
+          editor.session.setValue(cppInit);
+          editor.session.setMode("ace/mode/c_cpp");
+          break;
+        default:
+          editor.session.setValue(pyInit);
+          editor.session.setMode("ace/mode/python");
+          break;
+      }
+    });
+  </script>
+</body>
+
+</html>
