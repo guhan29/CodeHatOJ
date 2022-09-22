@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- <!DOCTYPE problems SYSTEM "problem_type.dtd"> -->
+
+<problems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="problem_schema.xsd">
+  <problem id="1">
+    <problem_name>House Robber</problem_name>
+    <problem_handle>house-robber</problem_handle>
+    <problem_desc>You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security systems connected and it will automatically contact the police if two adjacent houses were broken into on the same night.
+
+      Given an integer array nums representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police.</problem_desc>
+    <category>1</category>
+    <difficulty>Medium</difficulty>
+    <timelimit>1</timelimit>
+    <memorylimit>5000</memorylimit>
+    <author>2</author>
+    <points>100</points>
+    <created_at>2022-08-25T13:08:23.478Z</created_at>
+    <updated_at>2022-08-25T13:08:23.478Z</updated_at>
+  </problem>
+</problems>

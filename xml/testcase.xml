@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<testcase id="1">
+  <problem_id>3</problem_id>
+  <input>"5"</input>
+  <output>"1 2 3 4 5"</output>
+</testcase>

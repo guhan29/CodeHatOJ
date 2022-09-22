@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="problems">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="problem">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="problem_name"/>
+              <xs:element type="xs:string" name="problem_handle"/>
+              <xs:element type="xs:string" name="problem_desc"/>
+              <xs:element type="xs:byte" name="category"/>
+              <xs:element type="xs:string" name="difficulty"/>
+              <xs:element type="xs:byte" name="timelimit"/>
+              <xs:element type="xs:short" name="memorylimit"/>
+              <xs:element type="xs:byte" name="author"/>
+              <xs:element type="xs:byte" name="points"/>
+              <xs:element type="xs:dateTime" name="created_at"/>
+              <xs:element type="xs:dateTime" name="updated_at"/>
+            </xs:sequence>
+            <xs:attribute type="xs:byte" name="id"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

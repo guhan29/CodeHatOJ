@@ -1,0 +1,5 @@
+<!ELEMENT testcase (problem_id,input,output)>
+<!ATTLIST testcase id ID NMTOKEN #REQUIRED>
+<!ELEMENT problem_id (#PCDATA)>
+<!ELEMENT input (#PCDATA)>
+<!ELEMENT output (#PCDATA)>

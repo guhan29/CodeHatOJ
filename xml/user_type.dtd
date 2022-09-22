@@ -1,0 +1,8 @@
+<!ELEMENT user (fname,lname,email,ph,address,country,about)>
+<!ELEMENT fname (#PCDATA)>
+<!ELEMENT lname (#PCDATA)>
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT ph (#PCDATA)>
+<!ELEMENT address (#PCDATA)>
+<!ELEMENT country (#PCDATA)>
+<!ELEMENT about (#PCDATA)>

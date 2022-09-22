@@ -21,25 +21,25 @@
       <h2 class="form-subtitle" style="font-size: 1.5rem;">
         Create Problem
       </h2>
-      <form class="form">
+      <form class="form" name="cpform" onsubmit="return validateForm()">
         <div class="form-panel">
           <div class="form-row">
             <label>Problem Name</label>
             <div class="control">
-              <input type="text" name="first-name" placeholder="Eg: House Robber" class="input">
+              <input type="text" name="fname" placeholder="Eg: House Robber" class="input">
             </div>
           </div>
 
           <div class="form-row">
             <label>Problem Handle</label>
             <div class="control">
-              <input type="text" name="last-name" placeholder="Eg: house-robber" class="input">
+              <input type="text" name="lname" placeholder="Eg: house-robber" class="input">
             </div>
           </div>
           <div class="form-row">
             <label>Problem Defenition</label>
             <div class="control">
-              <textarea class="form-control input"></textarea>
+              <textarea class="form-control input" name="problemdef"></textarea>
             </div>
           </div>
 
@@ -83,6 +83,34 @@
       </form>
     </div>
   </div>
+
+  <script type="text/javascript">
+    function validateForm() {
+      let fname = document.forms["cpform"]["fname"].value;
+      let lname = document.forms["cpform"]["lname"].value;
+      let time_limit = document.forms["cpform"]["time_limit"].value;
+      let memory_limit = document.forms["cpform"]["memory_limit"].value;
+      let points = document.forms["cpform"]["points"].value;
+      
+      if (fname == "") {
+        alert("Problem Name must be filled out");
+        return false;
+      }
+      if (lname == "") {
+        alert("Problem Handle must be filled out");
+        return false;
+      }
+      if (time_limit > 60|| time_limit < 1) {
+        alert("Invalid time limit");
+        return false;
+      }
+      if (memory_limit > 10000 || memory_limit < 100) {
+        alert("Invalid memory limit");
+        return false;
+      }
+      return true;
+    }
+  </script>
 </body>
 
 </html>

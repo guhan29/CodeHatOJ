@@ -1,0 +1,15 @@
+<!ELEMENT problems (problem)>
+<!ELEMENT problem (problem_name, problem_handle, problem_desc, category, difficulty, timelimit, memorylimit, author, points, created_at, updated_at)+>
+<!ELEMENT problem_name (#PCDATA)>
+<!ELEMENT problem_handle (#PCDATA)>
+<!ELEMENT problem_desc (#PCDATA)>
+<!ELEMENT category (#PCDATA)>
+<!ELEMENT difficulty (#PCDATA)>
+<!ELEMENT timelimit (#PCDATA)>
+<!ELEMENT memorylimit (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT points (#PCDATA)>
+<!ELEMENT created_at (#PCDATA)>
+<!ELEMENT updated_at (#PCDATA)>
+
+<!ATTLIST problem id ID NCName #REQUIRED>
