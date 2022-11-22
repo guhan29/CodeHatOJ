@@ -1,0 +1,400 @@
+<div class="container">
+  <div
+    class="login-form-box"
+    style="background-color: #ffffff; padding: 0 5rem 5rem 5rem"
+  >
+    <img
+      src="/images/problem.png"
+      class="img-rounded center-block"
+      style="width: 150px"
+      alt="Avatar"
+    />
+    <h2 class="form-title" style="font-size: 2rem">Author Problems</h2>
+    <h2 class="form-subtitle" style="font-size: 1.5rem">Create Problem</h2>
+    <form class="form" name="problemForm" ng-submit="submit()">
+      <div class="form-panel">
+        <div class="form-row">
+          <label>Problem Name<strong>.*</strong></label>
+          <div class="control">
+            <input
+              type="text"
+              name="name"
+              ng-model="name"
+              placeholder="Eg: House Robber"
+              class="input"
+              required
+            />
+            <span
+              style="color: red"
+              ng-show="problemForm.name.$dirty && problemForm.name.$invalid"
+            >
+              <span ng-show="problemForm.name.$error.required"
+                >Problem Name is required.</span
+              >
+            </span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label>Problem Handle<strong>.*</strong></label>
+          <div class="control">
+            <input
+              type="text"
+              ng-model="handle"
+              name="handle"
+              placeholder="Eg: house-robber"
+              class="input"
+              ng-pattern="handleRegex"
+              minlength="3"
+              required
+            />
+            <span
+              style="color: red"
+              ng-show="problemForm.handle.$dirty && problemForm.handle.$invalid"
+            >
+              <span ng-show="problemForm.handle.$error.required"
+                >Problem Handle is required.</span
+              >
+              <span
+                style="display: inline-block"
+                ng-show="problemForm.handle.$error.pattern"
+                >Problem Handle should contain no spaces and the allowed values
+                are characters, numbers ans a hyphen(-).</span
+              >
+              <span
+                style="display: inline-block"
+                ng-show="problemForm.handle.$error.minlength"
+                >Problem Handle must contain atleast 3 characters.</span
+              >
+            </span>
+          </div>
+        </div>
+        <div class="form-row">
+          <label
+            >Problem Description (Supports Markdown)<strong>.*</strong></label
+          >
+          <div class="control">
+            <textarea
+              id="description"
+              ng-change="previedDescMD()"
+              ng-model="description"
+              name="description"
+              class="form-control input"
+              required
+            ></textarea>
+          </div>
+          <!-- <textarea disabled name="" id="" cols="30" rows="10"></textarea> -->
+          <span
+            style="
+              display: inline-block;
+              margin-top: 1rem;
+              min-width: 5rem;
+              min-height: 4rem;
+              background-color: rgba(118, 118, 118, 0.3);
+              border-color: rgba(118, 118, 118, 0.3);
+            "
+            id="descriptionPreview"
+          ></span>
+
+          <span
+            style="color: red"
+            ng-show="problemForm.description.$dirty && problemForm.description.$invalid"
+          >
+            <span ng-show="problemForm.description.$error.required"
+              >Problem Description is required.</span
+            >
+          </span>
+        </div>
+
+        <div class="form-row">
+          <label>Problem Category<strong>(optional)</strong></label>
+          <div class="control">
+            <select
+              class="form-control"
+              ng-model="category"
+              name="category"
+              id="category"
+              multiple
+            >
+              <option
+                ng-repeat="category1 in categories"
+                value="{{ category1._id }}"
+                class="form-control"
+              >
+                {{ category1.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label>Difficulty.*</label>
+          <div class="control">
+            <select
+              name="difficulty"
+              ng-model="difficulty"
+              class="form-control"
+              required
+            >
+              <option value="Easy" selected>Easy</option>
+              <option value="Medium">Medium</option>
+              <option value="Hard">Hard</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label>Time Limit (secs)<strong>.*</strong></label>
+          <div class="control">
+            <input
+              type="number"
+              name="timeLimit"
+              ng-model="timeLimit"
+              placeholder="2"
+              class="input"
+              max="5"
+              required
+            />
+            <span
+              style="color: red"
+              ng-show="problemForm.timeLimit.$dirty && problemForm.timeLimit.$invalid"
+            >
+              <span ng-show="problemForm.timeLimit.$error.required"
+                >Time Limit is required.</span
+              >
+              <span ng-show="problemForm.timeLimit.$error.max"
+                >Max time limit is 5s.</span
+              >
+            </span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label>Memory Limit (kilo bytes)<strong>.*</strong></label>
+          <div class="control">
+            <input
+              type="number"
+              name="memoryLimit"
+              ng-model="memoryLimit"
+              placeholder="5120"
+              class="input"
+              min="5120"
+              max="262144"
+              required
+            />
+            <span
+              style="color: red"
+              ng-show="problemForm.memoryLimit.$dirty && problemForm.memoryLimit.$invalid"
+            >
+              <span ng-show="problemForm.memoryLimit.$error.required"
+                >Memory Limit is required.</span
+              >
+              <span ng-show="problemForm.memoryLimit.$error.max"
+                >Max memory limit is 262144 KB (256 MB).</span
+              >
+              <span ng-show="problemForm.memoryLimit.$error.min"
+                >Min memory limit is 5120 KB (5 MB).</span
+              >
+            </span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label>Input Explaination .*</label>
+          <div class="control">
+            <input
+              type="text"
+              name="inputExplaination"
+              ng-model="inputExplaination"
+              placeholder="First Line coonsists of number"
+              class="input"
+              required
+            />
+            <span
+              style="color: red"
+              ng-show="problemForm.inputExplaination.$dirty && problemForm.inputExplaination.$invalid"
+            >
+              <span ng-show="problemForm.inputExplaination.$error.required"
+                >Input explaination is required.</span
+              >
+            </span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label>Output Explaination .*</label>
+          <div class="control">
+            <input
+              type="text"
+              name="outputExplaination"
+              ng-model="outputExplaination"
+              placeholder="print n numbers"
+              class="input"
+              required
+            />
+            <span
+              style="color: red"
+              ng-show="problemForm.outputExplaination.$dirty && problemForm.outputExplaination.$invalid"
+            >
+              <span ng-show="problemForm.outputExplaination.$error.required"
+                >Output explaination is required.</span
+              >
+            </span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label>Bounds (optional) supports markdown</label>
+          <div class="control">
+            <textarea
+              class="form-control"
+              type="text"
+              id="bounds"
+              name="bounds"
+              ng-model="bounds"
+              placeholder="First Line coonsists of number"
+              class="input"
+            ></textarea>
+          </div>
+          <span
+            style="
+              display: inline-block;
+              margin-top: 1rem;
+              min-width: 5rem;
+              min-height: 4rem;
+              background-color: rgba(118, 118, 118, 0.3);
+              border-color: rgba(118, 118, 118, 0.3);
+            "
+            id="boundsPreview"
+          ></span>
+        </div>
+
+        <div class="form-row">
+          <label>Sample TestCases .*</label>
+          <ul class="list-group">
+            <li
+              class="list-group-item"
+              data-ng-repeat="testcase in sampleTestCases"
+            >
+              <div class="row">
+                <div class="col-sm-9" style="margin-bottom: 1rem">
+                  <textarea
+                    class="form-control"
+                    type="text"
+                    ng-model="testcase.input"
+                    placeholder="Sample Input"
+                  ></textarea>
+                </div>
+                <div class="col-sm-9" style="margin-bottom: 1rem">
+                  <textarea
+                    class="form-control"
+                    type="text"
+                    ng-model="testcase.output"
+                    placeholder="Sample Output"
+                  ></textarea>
+                </div>
+                <div class="col-sm-9">
+                  <textarea
+                    class="form-control"
+                    type="text"
+                    ng-model="testcase.explaination"
+                    placeholder="Explaination for the testcase"
+                  ></textarea>
+                </div>
+              </div>
+              <button
+                class="btn btn-danger"
+                ng-click="removeSampleTestCase(testcase.id)"
+                ng-if="testcase.id!=sampleTCindex"
+              >
+                -
+              </button>
+              <button
+                class="btn btn-danger"
+                ng-click="addNewSampleTestCase()"
+                ng-if="testcase.id===sampleTCindex"
+              >
+                +
+              </button>
+            </li>
+          </ul>
+          <!-- <div id="choicesDisplay">{{ sampleTestCases }}</div> -->
+        </div>
+
+        <div class="form-row">
+          <label>TestCases .*</label>
+          <ul class="list-group">
+            <li class="list-group-item" data-ng-repeat="testcase in testCases">
+              <div class="row">
+                <div class="col-sm-9" style="margin-bottom: 1rem">
+                  <textarea
+                    class="form-control"
+                    type="text"
+                    ng-model="testcase.input"
+                    placeholder="Input"
+                  ></textarea>
+                </div>
+                <div class="col-sm-9" style="margin-bottom: 1rem">
+                  <textarea
+                    class="form-control"
+                    type="text"
+                    ng-model="testcase.output"
+                    placeholder="Output"
+                  ></textarea>
+                </div>
+              </div>
+              <button
+                class="btn btn-danger"
+                ng-click="removeTestCase(testcase.id)"
+                ng-if="testcase.id!=TCindex"
+              >
+                -
+              </button>
+              <button
+                class="btn btn-danger"
+                ng-click="addTestCase()"
+                ng-if="testcase.id===TCindex"
+              >
+                +
+              </button>
+            </li>
+          </ul>
+          <!-- <div id="choicesDisplay">{{ testCases }}</div> -->
+        </div>
+
+        <br />
+        <button class="button" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  // console.log("hello world");
+  // console.log($("#description"));
+  // var MarkdownIt = require('markdown-it'),
+  // var md = new MarkdownIt();
+  var md = window.markdownit();
+  var result = md.render("# markdown-it rulezz!");
+  $("#description").keyup(function () {
+    // console.log(result);
+    console.log(this.value);
+    $("#descriptionPreview").html(md.render(this.value));
+  });
+  $("#description").change(function () {
+    console.log(result);
+    console.log(this.value);
+    $("#descriptionPreview").html(md.render(this.value));
+  });
+
+  $("#bounds").keyup(function () {
+    console.log(result);
+    console.log(this.value);
+    $("#boundsPreview").html(md.render(this.value));
+  });
+  $("#bounds").change(function () {
+    console.log(result);
+    console.log(this.value);
+    $("#boundsPreview").html(md.render(this.value));
+  });
+</script>

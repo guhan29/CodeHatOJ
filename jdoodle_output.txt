@@ -1,0 +1,30 @@
+{
+  "clientId": "5dfb4f5f850b1f19c6de3e95cb1b7aad",
+  "clientSecret": "415207e4fdc5a2337e2f9e791d5aa2f0f3a2f5807d2c4c96d17fc7e45905c0fd",
+  "script": "#include<iostream>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n\nvector<int> dp;\n    \n\nint robHouse(vector<int>& nums, int n) {\n  if (n <= 0) {\n      return 0;\n  }\n  if (dp[n - 1] != -1) {\n      return dp[n - 1];\n  }\n  int selected = nums[n - 1] + robHouse(nums, n - 2);\n  int notSelected = robHouse(nums, n - 1);\n  return dp[n - 1] = max(selected, notSelected);\n}\n\nint rob(vector<int>& nums) {\n        int n = nums.size();\n        dp.resize(n, -1);\n        return robHouse(nums, n);\n    }\n\nint main() {\n  int n;\n  cin >> n;\n  vector<int> nums(n);\n  for (int i = 0; i < n; i++) {\n    cin >> nums[i];\n  }\n  cout << rob(nums) << endl \n  return 0;\n}",
+  "language": "cpp17",
+  "versionIndex": "0",
+  "stdin": "4 \n1 2 3 1"
+}
+
+{
+  "output": "4\n",
+  "statusCode": 200,
+  "memory": "3308",
+  "cpuTime": "0.00"
+}
+
+
+{
+  "output": "4\n\n\n\n JDoodle - Timeout \nIf your program reads input, please enter the inputs in the STDIN box above or try to enable the \"Interactive\" mode option above.\nPlease check your program does not contain an infinite loop. \nContact JDoodle support at jdoodle@nutpan.com for more information.",
+  "statusCode": 200,
+  "memory": null,
+  "cpuTime": null
+}
+
+{
+  "output": "\njdoodle.cpp: In function ‘int main()’:\njdoodle.cpp:34:28: error: expected ‘;’ before ‘return’\n   34 |   cout << rob(nums) << endl\n      |                            ^\n      |                            ;\n   35 |   return 0;\n      |   ~~~~~~                    \n",
+  "statusCode": 200,
+  "memory": null,
+  "cpuTime": null
+}

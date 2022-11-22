@@ -1,0 +1,96 @@
+<!-- <div class="blog-login-wrapper">
+    <form class="" ng-submit="submit()">
+        <div class="blog-login-error">{{error}}</div>
+        <div class="blog-login-label"><label for="username">Username:</label></div>
+        <div class="blog-login-element"><input type="text" ng-model="username" name="username" placeholder="username" required/></div>
+        <div class="blog-login-label"><label for="password">Password:</label></div>
+        <div class="blog-login-element"><input type="password" ng-model="password" name="password" placeholder="password" required/></div>
+        <div class="blog-login-button"><button type="submit" class="form-button">Sign in</button></div>
+    </form>
+</div> -->
+
+<div class="full-container">
+  <div class="cus-container">
+    <div class="login-box">
+      <div class="login-image-wrapper">
+        <figure>
+          <img src="/images/programming.svg" alt="Programming" />
+        </figure>
+      </div>
+      
+      <div class="login-form-box">
+        <div class="alert alert-danger" ng-if="error">
+          {{ error }}
+        </div>
+        <h2 class="form-title">Welcome Back</h2>
+        <h3 class="form-subtitle">
+          Sign in with credentials or social account
+        </h3>
+        <form name="loginForm" ng-submit="submit()" method="post">
+          <div class="login-form">
+            <div class="buttons">
+              <button class="ghbtn">
+                <span class="icon mr-2">
+                  <!-- <i class="mdi mdi-github mdi-24px"></i> -->
+                  <!-- <span class="glyphicon glyphicon-log-in"></span> -->
+                  <i class="fa-brands fa-github"></i>
+                </span>
+                <span>Sign in with Github</span>
+              </button>
+            </div>
+            <div class="auth-middle-border">
+              <span class="bar"></span>
+              <span>Or</span>
+              <span class="bar"></span>
+            </div>
+            <div class="form-panel">
+              <div class="form-row">
+                <label>Email</label>
+                <div class="control">
+                  <input
+                    ng-model="email"
+                    name="email"
+                    type="email"
+                    placeholder="Enter your email address"
+                    class="input"
+                    required
+                  />
+                  <span style="color:red" ng-show="loginForm.email.$dirty && loginForm.email.$invalid">
+                    <span ng-show = "loginForm.email.$error.required">Email is required.</span>
+                    <span ng-show = "loginForm.email.$error.email">Enter valid email.</span>
+                 </span>
+                </div>
+              </div>
+              <div class="form-row">
+                <label>Password</label>
+                <div class="control">
+                  <input
+                    ng-model="password"
+                    name="password"
+                    type="password"
+                    placeholder="Enter your password"
+                    class="input"
+                    required
+                  />
+                  <span style="color:red" ng-show="loginForm.password.$dirty && loginForm.password.$invalid">
+                    <span ng-show = "loginForm.password.$error.required">Password is required.</span>
+                 </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="submit">Login</button>
+          <div class="account-links">
+            <a href="#" class="account-text-centered forgot"
+              >Forgot Password?</a
+            >
+            <br /><br />
+            <div class="account-text-centered">
+              <a href="#!/register">Don't have an account? Sign up</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

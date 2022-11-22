@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <title>Login - HatCode</title>
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+      
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">HatCodeOJ</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Page 1</a></li>
+          <li><a href="#">Page 2</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="login-form-box" style="background-color: #ffffff; padding: 0 5rem 5rem 5rem;">
+        <img src="./images/problem.png" class="img-rounded center-block" style="width: 150px;" alt="Avatar" />
+        <h2 class="form-title" style="font-size: 2rem;">Author Problems</h2>
+        <h2 class="form-subtitle" style="font-size: 1.5rem;">
+          Create Problem
+        </h2>
+        <form class="form" name="cpform" onsubmit="return validateForm()">
+          <div class="form-panel">
+            <div class="form-row">
+              <label>Problem Name</label>
+              <div class="control">
+                <input type="text" name="fname" placeholder="Eg: House Robber" class="input">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label>Problem Handle</label>
+              <div class="control">
+                <input type="text" name="lname" placeholder="Eg: house-robber" class="input">
+              </div>
+            </div>
+            <div class="form-row">
+              <label>Problem Defenition</label>
+              <div class="control">
+                <textarea class="form-control input" name="problemdef"></textarea>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label>Time Limit (secs)</label>
+              <div class="control">
+                <input type="number" name="time_limit" placeholder="2" class="input">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label>Memory Limit (bytes)</label>
+              <div class="control">
+                <input type="number" name="memory_limit" placeholder="5000" class="input">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label>Points</label>
+              <div class="control">
+                <input type="number" name="points" placeholder="100" class="input">
+              </div>
+            </div>
+
+            <div class="grouped fields">
+              <div class="form-row">
+                <label for="">TestCase #1</label>
+                <input type="text" name="testcase-input" placeholder="TestCase Input">
+                <br><br>
+                <textarea rows="2" placeholder="TestCase Output" class="form-control"></textarea>
+              </div>
+              <button class="btn btn-primary">
+                Add more
+                <i class="plus icon"></i>
+              </button>
+            </div>
+
+            <br />
+            <button class="button" type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      function validateForm() {
+        let fname = document.forms["cpform"]["fname"].value;
+        let lname = document.forms["cpform"]["lname"].value;
+        let time_limit = document.forms["cpform"]["time_limit"].value;
+        let memory_limit = document.forms["cpform"]["memory_limit"].value;
+        let points = document.forms["cpform"]["points"].value;
+        
+        if (fname == "") {
+          alert("Problem Name must be filled out");
+          return false;
+        }
+        if (lname == "") {
+          alert("Problem Handle must be filled out");
+          return false;
+        }
+        if (time_limit > 60|| time_limit < 1) {
+          alert("Invalid time limit");
+          return false;
+        }
+        if (memory_limit > 10000 || memory_limit < 100) {
+          alert("Invalid memory limit");
+          return false;
+        }
+        return true;
+      }
+    </script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<style>
+  html {
+    background-color: white !important;
+  }
+
+  body {
+    background-color: white !important;
+  }
+
+  #langform {
+    margin-top: 3rem;
+  }
+
+  .code-editor {
+    position: relative;
+    width: 100%;
+    height: 50rem;
+    /* background-color: black; */
+    margin-bottom: 5rem;
+    margin-top: 2rem;
+  }
+  
+
+  #editor {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    font-size: 1em;
+  }
+</style>
+
+
+
+<div class="container">
+  <h2>{{ problem.name }}</h2>
+  <div ng-if="problem.category.length != 0">
+    <p><span class="label label-info" ng-repeat="cat in problem.category">{{ cat.name }}</span></p>
+  </div>
+  <ul class="nav nav-tabs">
+    <li class="active">
+      <a data-toggle="tab" data-target="#description">
+        <span class="glyphicon glyphicon-list-alt"></span>
+        Description
+      </a>
+    </li>
+    <li><a data-toggle="tab" id="subTab" data-target="#submissions-menu">Submissions</a></li>
+    <li><a data-toggle="tab" data-target="#editorial-menu">Editorial</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="description" class="tab-pane fade in active">
+      <div ng-bind-html="problem.description"></div>
+
+      <hr />
+
+      <div ng-if="problem.bounds">
+        <h3>Bounds</h3>
+        <p ng-bind-html="problem.bounds"></p>
+      </div>
+      <br>
+      <div>
+        <h3>Input</h3>
+        <p>{{ problem.inputExplaination }}</p>
+        <h3>Output</h3>
+        <p>{{ problem.outputExplaination }}</p>
+      </div>
+      <br>
+
+      <div>
+        <h3>Sample TestCases</h3>
+        <div ng-repeat="tc in problem.sampleTestCases" class="mb-3">
+          <div ng-if="tc.input">
+            <strong>Input</strong>
+            <pre>{{ tc.input }}</pre>
+          </div>
+          <div>
+            <strong>Output</strong>
+            <pre>{{ tc.output }}</pre>
+          </div>
+          <div ng-if="tc.explaination">
+            <strong>Explaination</strong>
+            <pre>{{ tc.explaination }}</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="submissions-menu" class="tab-pane fade">
+      <h3>Submissions</h3>
+      <p ng-if="submissions.length == 0">No submissions yet</p>
+      <div ng-if="submissions.length != 0">
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <div  class="panel panel-default" ng-repeat="(key, sub) in submissions">
+            <div class="panel-heading" role="tab" id="heading{{ key }}">
+
+              <h4 class="panel-title bg-success" ng-if="sub.result">
+                <a data-toggle="collapse" data-parent="#accordion" data-target="#collapse{{ key }}" aria-expanded="{{ key == 0 ? 'true' : 'false' }}" aria-controls="collapse{{ key }}">
+                  Accepted <a ng-href="#!/submission/{{ sub._id }}">Click to see</a>
+                </a>
+              </h4>
+              <h4 class="panel-title bg-danger" ng-if="!sub.result">
+                <a data-toggle="collapse" data-parent="#accordion" data-target="#collapse{{ key }}" aria-expanded="{{ key == 0 ? 'true' : 'false' }}" aria-controls="collapse{{ key }}">
+                  Not Accepted <a ng-href="#!/submission/{{ sub._id }}">Click to see</a>
+                </a>
+              </h4>
+            </div>
+            <div id="collapse{{ key }}" class="panel-collapse collapse {{ key == 0 ? 'in' : '' }}" role="tabpanel" aria-labelledby="heading{{ key }}">
+              <div class="panel-body">
+                <ul class="list-group">
+                  <li ng-repeat="tr in sub.testResults" class="list-group-item {{ tr.verdict == 'Accepted' ? 'list-group-item-success' : 'list-group-item-danger' }}">
+                    <strong>{{ tr.verdict }}</strong>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="editorial-menu" class="tab-pane fade">
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+      <h3>Editorial</h3>
+      <p ng-if="!editorial">-</p>
+      <span ng-if="editorial">
+        <hr>
+        <h2>Explaination</h2>
+        <div ng-bind-html="editorial.explaination"></div>
+        <br>
+        <hr>
+        <h2>Code</h2>
+        <pre class="prettyprint">{{ editorial.code }}</pre>
+      </span>
+    </div>
+  </div>
+
+  <hr />
+
+  <form class="form-inline" id="langform" name="langform" ng-submit="submit()">
+    <textarea ng-model="userCode" id="userCode" name="userCode" value='console.log("Hello, World");' hidden></textarea>
+    <select class="form-control" id="langsel" ng-model="selectedLanguange">
+      <option value="nodejs">Javascript</option>
+      <option value="cpp14">C++</option>
+      <option value="c">C</option>
+      <option value="python3">Python 3</option></select
+    >&nbsp;
+
+    <input class="btn btn-primary" type="submit" value="Submit" />
+  </form>
+
+  <div class="code-editor">
+    <div id="editor">console.log("Hello, World");</div>
+  </div>
+</div>
+
+<script
+  src="./ace-builds/src-min-noconflict/ace.js"
+  type="text/javascript"
+  charset="utf-8"
+></script>
+
+<script>
+  var editor = ace.edit("editor");
+  editor.setTheme("ace/theme/monokai");
+  editor.session.setMode("ace/mode/javascript");
+
+  let cppInit = `#include <iostream>
+
+int main() {
+  std::cout << "Hello World!";
+  return 0;
+}`;
+  let cInit = `#include <stdio.h>
+
+int main() {
+  printf("Hello World!\\n");
+  return 0;
+}`;
+
+  let pyInit = `print("Hello, World")`;
+  let jsInit = `console.log("Hello, World");`;
+
+  $('#userCode').val(jsInit);
+  $("#userCode").trigger('input');
+
+  $("#langsel").change(function (el) {
+    let lang = el.target.value;
+    switch (lang) {
+      case "nodejs":
+        editor.session.setValue(jsInit);
+        editor.session.setMode("ace/mode/javascript");
+        $('#userCode').val(jsInit);
+        break;
+      case "c":
+        editor.session.setValue(cInit);
+        editor.session.setMode("ace/mode/c_cpp");
+        $('#userCode').val(cInit);
+        break;
+      case "cpp14": 
+        editor.session.setValue(cppInit);
+        editor.session.setMode("ace/mode/c_cpp");
+        $('#userCode').val(cppInit);
+        break;
+      default:
+        editor.session.setValue(pyInit);
+        editor.session.setMode("ace/mode/python");
+        $('#userCode').val(pyInit);
+        break;
+    }
+    $("#userCode").trigger('input');
+  });
+
+  $('#editor').change(function() {
+    // console.log(this.value);
+    $("#userCode").val(editor.getValue().trim());
+    console.log($("#userCode").val());
+    $("#userCode").trigger('input');
+  });
+
+  $('#editor').keyup(function() {
+    // console.log(editor.getValue());
+    $("#userCode").val(editor.getValue().trim());
+    console.log($("#userCode").val());
+    $("#userCode").trigger('input');
+  })
+</script>

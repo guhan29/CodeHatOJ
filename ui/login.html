@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <title>Login - HatCode</title>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">WebSiteName</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Page 1</a></li>
+        <li><a href="#">Page 2</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="full-container">
+    <div class="cus-container">
+      <div class="login-box">
+        <div class="login-image-wrapper">
+          <figure>
+            <img src="./images/programming.svg" alt="Programming" />
+          </figure>
+        </div>
+        <div class="login-form-box">
+          <h2 class="form-title">Welcome Back</h2>
+          <h3 class="form-subtitle">
+            Sign in with credentials or social account
+          </h3>
+          <form action="" method="get">
+            <div class="login-form">
+              <div class="buttons">
+                <button class="ghbtn">
+                  <span class="icon mr-2">
+                    <!-- <i class="mdi mdi-github mdi-24px"></i> -->
+                    <!-- <span class="glyphicon glyphicon-log-in"></span> -->
+                    <i class="fa-brands fa-github"></i>
+                  </span>
+                  <span>Sign in with Github</span>
+                </button>
+              </div>
+              <div class="auth-middle-border">
+                <span class="bar"></span>
+                <span>Or</span>
+                <span class="bar"></span>
+              </div>
+              <div class="form-panel">
+                <div class="form-row">
+                  <label>Email or Handle</label>
+                  <div class="control">
+                    <input type="text" placeholder="Enter your email address or handle" class="input" />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <label>Password</label>
+                  <div class="control">
+                    <input type="password" placeholder="Enter your password" class="input" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button type="submit">Login</button>
+            <div class="account-links">
+              <a href="#" class="account-text-centered forgot">Forgot Password?</a>
+              <br><br>
+              <div class="account-text-centered">
+                <a href="./register.html">Don't have an account? Sign up</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

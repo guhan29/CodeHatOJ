@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>HatCode</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <link href="../css/index.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <header class="header">
+    <div class="cust-navbar">
+      <a href="./" class="nav-logo">HatCode</a>
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="./" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="./problems.html" class="nav-link">Problems</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">About</a>
+        </li>
+      </ul>
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      </nav>
+  </header>
+
+  <div class="full-container main-content" ng-app="myApp" ng-controller="myCtrl">
+    <div class="text-center">
+      <h1>Practice and Certify Your Coding Skills</h2>
+        <p>Don't leave your job application up to chance, certify your skills and start getting noticed</p>
+    </div>
+    <section class="features">
+      <div class="image-box-wrapper"  ng-repeat="banner in banners">
+        <figure>
+          <img src="{{ banner.imgSrc }}" alt="Coder Ide">
+        </figure>
+        <div class="box-content">
+          <h2>{{ banner.heading }}</h2>
+          <p>{{ banner.content }}</p>
+        </div>
+      </div>
+    </section>
+  </div>
+  <footer style="background-color: black; color: white; padding: 1.15rem; text-align: center;">Copyright Guhan M
+  </footer>
+  
+
+  <script src="../js/script.js"></script>
+
+  <!--
+  This script places a badge on your repl's full-browser view back to your repl's cover
+  page. Try various colors for the theme: dark, light, red, orange, yellow, lime, green,
+  teal, blue, blurple, magenta, pink!
+  -->
+  <!--   <script src="https://replit.com/public/js/replit-badge.js" theme="blue" defer></script> -->
+
+  <script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope) {
+      $scope.firstName = "John";
+      $scope.lastName = "Doe";
+      $scope.banners = [
+        {
+          imgSrc: "../images/Group-152.1.svg",
+          alt: "Coder Ide",
+          heading: "Practice in a Real-World Coding Environment",
+          content: "Complete challenges and assessments in a real-world coding environment and get scored on your understanding with Predictive Coding Scores."
+        },
+        {
+          imgSrc: "../images/Group-153.1.svg",
+          alt: "Coder Ide",
+          heading: "Certify Your Skills and Get Noticed by Employers",
+          content: "Apply to jobs using CodeSignal's widely accepted Certified Assessments and increase your chances of landing interviews."
+        },
+        {
+          imgSrc: "../images/Group-151.1.svg",
+          alt: "Coder Ide",
+          heading: "Be Prepared for Technical Interviews",
+          content: "Select a study plan that fits your schedule and start practicing concepts and topics frequently asked during real technical interviews."
+        }
+      ];
+      // console.log($scope);
+    });
+    </script>
+</body>
+
+</html>

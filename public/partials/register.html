@@ -1,0 +1,115 @@
+<div class="full-container">
+  <div class="cus-container">
+    <div class="login-box">
+      <div class="login-image-wrapper">
+        <figure>
+          <img src="./images/programming.svg" alt="Programming" />
+        </figure>
+      </div>
+      <div class="login-form-box">
+        <h2 class="form-title">New User</h2>
+        <h3 class="form-subtitle">
+          Sign Up with credentials or social account
+        </h3>
+        <form ng-submit="submit()" name="registerForm">
+          <div class="login-form">
+            <div class="buttons">
+              <button class="ghbtn">
+                <span class="icon mr-2">
+                  <!-- <i class="mdi mdi-github mdi-24px"></i> -->
+                  <i class="fa-brands fa-github"></i>
+                </span>
+                <span>Register with Github</span>
+              </button>
+            </div>
+            <div class="auth-middle-border">
+              <span class="bar"></span>
+              <span>Or</span>
+              <span class="bar"></span>
+            </div>
+            <div class="form-panel">
+              <div class="form-row">
+                <label>Email</label>
+                <div class="control">
+                  <input
+                    name="email"
+                    ng-model="email"
+                    type="email"
+                    placeholder="Enter your email address"
+                    class="input"
+                    required
+                  />
+                  <span style="color:red" ng-show="registerForm.email.$dirty && registerForm.email.$invalid">
+                    <span ng-show = "registerForm.email.$error.required">Email is required.</span>
+                    <span ng-show = "registerForm.email.$error.email">Enter valid email.</span>
+                  </span>
+                </div>
+              </div>
+              <div class="form-row">
+                <label>Handle</label>
+                <div class="control">
+                  <input
+                    type="text"
+                    name="username"
+                    ng-model="username"
+                    placeholder="Your unique username"
+                    class="input"
+                    minlength="3"
+                    required
+                  />
+                  <span style="color:red" ng-show="registerForm.username.$dirty && registerForm.username.$invalid">
+                    <span ng-show = "registerForm.username.$error.required">Handle is required.</span>
+                    <span ng-show = "registerForm.username.$error.minlength">Minimum length of handle is 3.</span>
+                  </span>
+                </div>
+              </div>
+              <div class="form-row">
+                <label>Password</label>
+                <div class="control">
+                  <input
+                    type="password"
+                    name="password"
+                    ng-model="password"
+                    placeholder="Enter your password"
+                    class="input"
+                    required
+                  />
+                </div>
+                <span style="color:red" ng-show="registerForm.password.$dirty && registerForm.password.$invalid">
+                  <span ng-show = "registerForm.password.$error.required">Password is required.</span>
+                </span>
+              </div>
+              <div class="form-row">
+                <label>Confirm Password</label>
+                <div class="control">
+                  <input
+                    name="confirmPassword"
+                    ng-model="confirmPassword"
+                    type="password"
+                    placeholder="Enter the same password"
+                    class="input"
+                    required
+                  />
+                </div>
+
+                <span style="color:red" ng-show="registerForm.confirmPassword.$dirty && registerForm.confirmPassword.$invalid">
+                  <span ng-show = "registerForm.password.$error.required">Confirm Password is required.</span>
+                </span>
+                <span style="color: red;" ng-show="registerForm.confirmPassword.$dirty">
+                  <span ng-show = "password != confirmPassword">Passwords does not match.</span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <button type="submit">Register</button>
+          <div class="account-links">
+            <br />
+            <div class="account-text-centered">
+              Already have an account? <a href="#!/login">Login</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

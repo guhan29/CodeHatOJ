@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="form-box">
+    <img src="./images/sketchbook.png"
+      style="box-sizing: border-box; display: block; height: 200px; width: 200px; margin: 0 auto;" alt="Sketch Book">
+    <h2 ng-if="btnVal">{{ btnVal }} a Category</h2>
+    <h2 ng-if="!btnVal">Create a Category</h2>
+    <br>
+    <form ng-submit="submit()" name="categoryForm">
+      <div class="form-panel">
+        <div class="form-row">
+          <label for="category">Category Name</label>
+          <div class="control">
+            <input ng-model="name" name="name" class="input" type="text" id="category" placeholder="Eg: Greedy" class="input" required>
+            <span style="color:red" ng-show="categoryForm.name.$dirty && categoryForm.name.$invalid">
+              <span ng-show = "categoryForm.name.$error.required">Category is required.</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <button ng-if="btnVal" type="submit" class="button">{{ btnVal }}</button>
+      <button ng-if="!btnVal" type="submit" class="button">Create</button>
+    </form>
+  </div>
+</div>

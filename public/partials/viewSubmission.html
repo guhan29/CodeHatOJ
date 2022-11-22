@@ -1,0 +1,22 @@
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+<div class="container">
+  <h2>Submission by <span class="text-primary">{{ submission.user.username }}</span></h2>
+
+  <strong>Prolem: </strong>
+  <a ng-href="#!/problems/{{ submission.id }}">{{ submission.problem.name }}</a>
+
+  &nbsp;&nbsp;&nbsp;&nbsp;
+
+  <strong>Language: </strong>
+  <span>{{ submission.language }}</span>
+
+  &nbsp;&nbsp;&nbsp;&nbsp;
+
+  <strong>Result: </strong>
+  <strong ng-if="submission.result" class="text-success">Accepted</strong>
+  <strong ng-if="!submission.result" class="text-danger">Not Accepted</strong>
+</div>
+<br>
+<div class="container">
+  <pre class="prettyprint">{{ submission.code }}</pre>
+</div>

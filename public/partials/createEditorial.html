@@ -1,0 +1,100 @@
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+<div class="container">
+  <h2 class="form-title" style="font-size: 2rem">Create Editorial</h2>
+  <!-- <h2 class="form-subtitle" style="font-size: 1.5rem">Create Problem</h2> -->
+  <form class="form" name="editorialForm" ng-submit="submit()">
+    <div class="form-panel">
+      <div class="form-row">
+        <label>Problem Name<strong>.*</strong></label>
+        <div class="control">
+          <select
+            name="problemId"
+            ng-model="problemId"
+            class="form-control"
+            required
+          >
+            <option value="{{ problem._id }}" ng-repeat="problem in problems">{{ problem.name }} | {{ problem.handle }}</option>
+            <!-- <option value="Medium">Medium</option> -->
+            <!-- <option value="Hard">Hard</option> -->
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label>Code</label>
+        <textarea
+              class="form-control"
+              type="text"
+              id="code"
+              name="code"
+              ng-model="code"
+              placeholder="Paste the code below"
+              class="input"
+            ></textarea>
+          </div>
+          <pre
+            style="
+              display: inline-block;
+              margin-top: 1rem;
+              min-width: 5rem;
+              min-height: 4rem;
+              background-color: rgba(118, 118, 118, 0.3);
+              border-color: rgba(118, 118, 118, 0.3);
+            "
+            id="codePreview"
+            class="prettyprint"
+          ></pre>
+      </div>
+
+      <div class="form-row">
+        <label>Explaination (supports markdown)</label>
+        <div class="control">
+          <textarea
+            class="form-control"
+            type="text"
+            id="explaination"
+            name="explaination"
+            ng-model="explaination"
+            placeholder="First Line coonsists of number"
+            class="input"
+            required
+          ></textarea>
+        </div>
+        <span
+          style="
+            display: inline-block;
+            margin-top: 1rem;
+            min-width: 5rem;
+            min-height: 4rem;
+            background-color: rgba(118, 118, 118, 0.3);
+            border-color: rgba(118, 118, 118, 0.3);
+          "
+          id="explainationPreview"
+        ></span>
+      </div>
+      <button type="submit">Submit</button>
+
+    </div>
+  </form>
+</div>
+
+<script>
+  var md = window.markdownit();
+  var result = md.render("# markdown-it rulezz!");
+  $('#code').change(function() {
+    // console.log(this.value);
+    $("#codePreview").text(this.value);
+  });
+  $('#code').keyup(function() {
+    $("#codePreview").text(this.value);
+  });
+
+  $('#explaination').change(function() {
+    // console.log(this.value);
+    $("#explainationPreview").html(md.render(this.value));
+  });
+  $('#explaination').keyup(function() {
+    $("#explainationPreview").html(md.render(this.value));
+  });
+</script>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>HatCode</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <div class="container" ng-app="myApp" ng-controller="myCtrl">
+    <div class="main">
+      <h1>Categories</h1>
+      <ul class="cards">
+        <li class="cards_item" ng-repeat="card in cards">
+          <div class="card">
+            <div class="card_image"><img src="{{ card.img }}" /></div>
+            <div class="card_content">
+              <h2 class="card_title">{{ card.title }}</h2>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope) {
+      $scope.cards = [
+        {
+          img: "../images/coffee.svg",
+          title: "All"
+        },
+        {
+          img: "../images/folder.svg",
+          title: "Data Structures"
+        },
+        {
+          img: "../images/graphs.svg",
+          title: "Advanced Search Techniques"
+        },
+        {
+          img: "../images/algorithm.svg",
+          title: "Divide and Conquer"
+        },
+        {
+          img: "../images/dp.svg",
+          title: "Dynamic Programming"
+        },
+        {
+          img: "../images/chess-pieces.svg",
+          title: "Game Theory"
+        },
+        {
+          img: "../images/neural.svg",
+          title: "Graph Theory"
+        }
+      ];
+      // console.log($scope);
+    });
+    </script>
+</body>
+
+</html>

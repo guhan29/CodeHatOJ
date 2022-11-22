@@ -1,0 +1,75 @@
+{
+  "blogList": [
+    {
+      "id": 1,
+      "_id": 1,
+      "date": 1400623623107,
+      "introText": "This is a blog post about AngularJS. We will cover how to build",
+      "blogText": "This is a blog post about AngularJS. We will cover how to build a blog and how to add comments to the blog post.",
+      "comments": [
+        {
+          "commentText": "Very good post. I love it."
+        },
+        {
+          "commentText": "When can we learn services."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "_id": 2,
+      "date": 1400267723107,
+      "introText": "In this blog post we will learn how to build applications based on REST",
+      "blogText": "In this blog post we will learn how to build applications based on REST web services that contain most of the business logic needed for the application."
+    }
+  ],
+  "blogPost": {
+    "id": 1,
+    "_id": 1,
+    "date": 1400623623107,
+    "introText": "This is a blog post about AngularJS. We will cover how to build",
+    "blogText": "This is a blog post about AngularJS. We will cover how to build a blog and how to add comments to the blog post."
+  },
+  "login": [
+    {
+      "username": "guhan",
+      "password": "guhan@123",
+      "id": 1
+    },
+    {
+      "username": "guhan",
+      "password": "guhan@123",
+      "id": 2
+    },
+    {
+      "username": "guhan",
+      "password": "guhan@123",
+      "id": 3
+    },
+    {
+      "username": "guhan",
+      "password": "guhan@123",
+      "id": 4
+    },
+    {
+      "username": "guhan",
+      "password": "guhan@123",
+      "id": 5
+    },
+    {
+      "username": "guhan",
+      "password": "guhan@123",
+      "id": 6
+    },
+    {
+      "username": "guhan",
+      "password": "guhan@123",
+      "id": 7
+    },
+    {
+      "username": "guhan",
+      "password": "guhan@123",
+      "id": 8
+    }
+  ]
+}

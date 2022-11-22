@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>HatCode</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <link href="../css/auth.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <div class="container" ng-app = "mainApp" ng-controller = "problemController">
+    <div class="login-form-box" style="background-color: #ffffff; padding: 0 5rem 5rem 5rem;">
+      <img src="../images/problem.png" class="img-rounded center-block" style="width: 150px;" alt="Avatar" />
+      <h2 class="form-title" style="font-size: 2rem;">Author Problems</h2>
+      <h2 class="form-subtitle" style="font-size: 1.5rem;">
+        Create Problem
+      </h2>
+      <form class="form" name="cpform" onsubmit="return validateForm()">
+        <div class="form-panel">
+          <div class="form-row">
+            <label>Problem Name</label>
+            <div class="control">
+              <input type="text" name="pName" ng-model="pName" placeholder="Eg: House Robber" class="input" required>
+            </div>
+            <span style = "color:red" ng-show = "cpform.pName.$dirty && cpform.pName.$invalid">
+              <span ng-show = "cpform.pName.$error.required">Problem Name is required.</span>
+            </span>
+          </div>
+
+          <div class="form-row">
+            <label>Problem Handle</label>
+            <div class="control">
+              <input type="text" name="phandle" ng-model="phandle" placeholder="Eg: house-robber" class="input" required>
+            </div>
+            <span style = "color:red" ng-show = "cpform.phandle.$dirty && cpform.phandle.$invalid">
+              <span ng-show = "cpform.phandle.$error.required">Problem handle is required.</span>
+            </span>
+          </div>
+          <div class="form-row">
+            <label>Problem Definition</label>
+            <div class="control">
+              <textarea class="form-control input" name="problemdef" ng-model="problemdef"></textarea>
+            </div>
+            <span style = "color:red" ng-show = "cpform.problemdef.$dirty && cpform.problemdef.$invalid">
+              <span ng-show = "cpform.problemdef.$error.required">Problem Definition is required.</span>
+            </span>
+          </div>
+
+          <div class="form-row">
+            <label>Time Limit (secs)</label>
+            <div class="control">
+              <input type="number" name="time_limit" placeholder="2" class="input" ng-model="time_limit" min="1" max="30" required>
+            </div>
+
+            <span style = "color:red" ng-show = "cpform.time_limit.$dirty && cpform.time_limit.$invalid">
+              <span ng-show = "cpform.time_limit.$error.required">Timelimit is required.</span>
+              <span ng-show = "cpform.time_limit.$error.min">Min timelimit should be atleast 1.</span>
+              <span ng-show = "cpform.time_limit.$error.max">Max timelimit is 30s.</span>
+            </span>
+          </div>
+
+          <div class="form-row">
+            <label>Memory Limit (bytes)</label>
+            <div class="control">
+              <input type="number" name="memory_limit" placeholder="5000" class="input" ng-model="memory_limit" max="10000" required>
+            </div>
+            <span style = "color:red" ng-show = "cpform.memory_limit.$dirty && cpform.memory_limit.$invalid">
+              <span ng-show = "cpform.memory_limit.$error.required">Memory limit is required.</span>
+              <span ng-show = "cpform.memory_limit.$error.max">Maximum memory limit is 10000 bytes.</span>
+            </span>
+          </div>
+
+          <div class="form-row">
+            <label>Points</label>
+            <div class="control">
+              <input type="number" name="points" placeholder="100" class="input" ng-model="points" required>
+            </div>
+            <span style = "color:red" ng-show = "cpform.points.$dirty && cpform.points.$invalid">
+              <span ng-show = "cpform.points.$error.required">Points are required.</span>
+            </span>
+          </div>
+
+          <div class="grouped fields">
+            <div class="form-row">
+              <label for="">TestCase #1</label>
+              <input type="text" name="testcase-input" placeholder="TestCase Input">
+              <br><br>
+              <textarea rows="2" placeholder="TestCase Output" class="form-control"></textarea>
+            </div>
+            <button class="btn btn-primary">
+              Add more
+              <i class="plus icon"></i>
+            </button>
+          </div>
+
+          <br />
+          <button class="button" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <script>
+    var mainApp = angular.module("mainApp", []);
+    
+    mainApp.controller('problemController', function($scope) {
+       $scope.reset = function() {
+          console.log($scope);
+          $scope.pName = "";
+          $scope.phandle = "";
+          $scope.problemdef = "";
+          $scope.time_limit = 1;
+          $scope.memory_limit = 5000;
+          $scope.points = 100;
+       }
+       
+       $scope.reset();
+    });
+ </script>
+
+  <script type="text/javascript">
+    function validateForm() {
+      let fname = document.forms["cpform"]["fname"].value;
+      let lname = document.forms["cpform"]["lname"].value;
+      let time_limit = document.forms["cpform"]["time_limit"].value;
+      let memory_limit = document.forms["cpform"]["memory_limit"].value;
+      let points = document.forms["cpform"]["points"].value;
+      
+      if (fname == "") {
+        alert("Problem Name must be filled out");
+        return false;
+      }
+      if (lname == "") {
+        alert("Problem Handle must be filled out");
+        return false;
+      }
+      if (time_limit > 60|| time_limit < 1) {
+        alert("Invalid time limit");
+        return false;
+      }
+      if (memory_limit > 10000 || memory_limit < 100) {
+        alert("Invalid memory limit");
+        return false;
+      }
+      return true;
+    }
+  </script>
+</body>
+
+</html>
